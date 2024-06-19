@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 89ccfc472d06ecb48a040081cd2cfa34
+folderAsset: yes
+=======
+<<<<<<<< HEAD:Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
+guid: 1b8d251f9af63b746bf2f7ffe00ebb9b
+========
+guid: 9d51a3b30fdc54e6aa03f76221b3658c
+folderAsset: yes
+>>>>>>>> 80f6472 (Spawnpoints programmiert):Assets/MyGame/Stanzi.meta
+>>>>>>> 80f6472 (Spawnpoints programmiert)
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

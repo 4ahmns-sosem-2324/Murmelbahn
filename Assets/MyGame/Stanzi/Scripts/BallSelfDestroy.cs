@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallSelfDestroy : MonoBehaviour
 {
     private Vector3 lastPosition;
     private bool isChecking = false;
+
 
     void Start()
     {
@@ -28,6 +30,7 @@ public class BallSelfDestroy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
 
     IEnumerator MovementChecker()

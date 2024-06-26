@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
 public class BuildingSystem : MonoBehaviour
 {
@@ -19,20 +20,21 @@ public class BuildingSystem : MonoBehaviour
 
     private PlaceableObject objectToPlade;
 
-    //[SerializeField] InputActionAsset inputs;
-    //InputActionMap map;
+    [SerializeField] InputActionAsset inputs;
+    InputActionMap map;
 
     private void Awake()
     {
         current = this;
         grid = gridLayout.gameObject.GetComponent<Grid>();
-        /*
+        
         map = inputs.FindActionMap("Debug");
         map.FindAction("Obj1").performed += InitializeWithObject;
         map.FindAction("Obj2").performed += InitializeWithObject;
         map.FindAction("Obj3").performed += InitializeWithObject;
         map.FindAction("Obj4").performed += InitializeWithObject;
-        */
+
+        map.FindAction("Obj2").performed += Test;
         //map.FindAction("Return").performed += objectToPlade.Rotate;
         
     }
@@ -40,7 +42,7 @@ public class BuildingSystem : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.A))
+        /*if (Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log("aaaaaa");
             InitializeWithObject(prefab1);
@@ -58,13 +60,13 @@ public class BuildingSystem : MonoBehaviour
         {
             InitializeWithObject(prefab4);
         }
-        
+        */
         if (!objectToPlade)
         {
             return; 
         }
         
-        if (Input.GetKeyDown(KeyCode.Return))
+        /*if (Input.GetKeyDown(KeyCode.Return))
         {
             objectToPlade.Rotate();
         }
@@ -85,7 +87,13 @@ public class BuildingSystem : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             Destroy(objectToPlade.gameObject); 
-        }
+        }*/
+    }
+
+
+    public void Test(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("AAAAAAAA");
     }
 
     public static Vector3 GetMouseWorldPosition()
@@ -132,7 +140,7 @@ public class BuildingSystem : MonoBehaviour
         Debug.Log("aaaaaaaaah");
     }
 
-    /*public void InitializeWithObject(InputAction.CallbackContext callbackContext)
+    public void InitializeWithObject(InputAction.CallbackContext callbackContext)
     {
         Vector3 position = SnapCoordinatesToGrid(Vector3.zero);
 
@@ -142,10 +150,9 @@ public class BuildingSystem : MonoBehaviour
         {
             prefab = prefab1;
         }
-        else if (callbackContext.action == map.FindAction("Obj2"))
+        else if (callbackContext.action.name == "Obj2")
         {
             prefab = prefab2;
-            Debug.Log("aaaaaaah");
         }
         else if (callbackContext.action == map.FindAction("Obj3"))
         {
@@ -168,7 +175,7 @@ public class BuildingSystem : MonoBehaviour
         }
 
     }
-    */
+    
     private bool CanBePlaced(PlaceableObject placeableObject)
     {
         BoundsInt area = new BoundsInt();
@@ -191,5 +198,15 @@ public class BuildingSystem : MonoBehaviour
     public void TakeArea(Vector3Int start, Vector3Int size) 
     {
         mainTileMap.BoxFill(start, whiteTile, start.x, start.y, start.x + size.x, start.y + size.y); 
+    }
+
+    private void OnDestroy()
+    {
+        map.FindAction("Obj1").performed -= InitializeWithObject;
+        map.FindAction("Obj2").performed -= InitializeWithObject;
+        map.FindAction("Obj3").performed -= InitializeWithObject;
+        map.FindAction("Obj4").performed -= InitializeWithObject;
+
+        //map.FindAction("Return").performed -= objectToPlade.Rotate;
     }
 }

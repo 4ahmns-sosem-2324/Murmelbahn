@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.InputSystem;
 
 public class BuildingSystem : MonoBehaviour
 {
@@ -20,26 +19,32 @@ public class BuildingSystem : MonoBehaviour
 
     private PlaceableObject objectToPlade;
 
-    [SerializeField] InputActionAsset inputs;
-    InputActionMap map;
+    //[SerializeField] InputActionAsset inputs;
+    //InputActionMap map;
 
     private void Awake()
     {
         current = this;
         grid = gridLayout.gameObject.GetComponent<Grid>();
+        /*
         map = inputs.FindActionMap("Debug");
         map.FindAction("Obj1").performed += InitializeWithObject;
         map.FindAction("Obj2").performed += InitializeWithObject;
         map.FindAction("Obj3").performed += InitializeWithObject;
         map.FindAction("Obj4").performed += InitializeWithObject;
-        map.FindAction("Return").performed += objectToPlade.Rotate;
+        */
+        //map.FindAction("Return").performed += objectToPlade.Rotate;
+        
     }
 
     private void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.A))
+        
+        if (Input.GetKeyDown(KeyCode.A))
         {
+            Debug.Log("aaaaaa");
             InitializeWithObject(prefab1);
+            
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
@@ -52,18 +57,18 @@ public class BuildingSystem : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.F))
         {
             InitializeWithObject(prefab4);
-        }*/
-
+        }
+        
         if (!objectToPlade)
         {
             return; 
         }
-
-        /*if (Input.GetKeyDown(KeyCode.Return))
+        
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             objectToPlade.Rotate();
-        }*/
-
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (CanBePlaced(objectToPlade))
@@ -123,9 +128,11 @@ public class BuildingSystem : MonoBehaviour
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
         objectToPlade = obj.GetComponent<PlaceableObject>();
         obj.AddComponent<ObjectDrag>();
+
+        Debug.Log("aaaaaaaaah");
     }
 
-    public void InitializeWithObject(InputAction.CallbackContext callbackContext)
+    /*public void InitializeWithObject(InputAction.CallbackContext callbackContext)
     {
         Vector3 position = SnapCoordinatesToGrid(Vector3.zero);
 
@@ -138,6 +145,7 @@ public class BuildingSystem : MonoBehaviour
         else if (callbackContext.action == map.FindAction("Obj2"))
         {
             prefab = prefab2;
+            Debug.Log("aaaaaaah");
         }
         else if (callbackContext.action == map.FindAction("Obj3"))
         {
@@ -160,7 +168,7 @@ public class BuildingSystem : MonoBehaviour
         }
 
     }
-
+    */
     private bool CanBePlaced(PlaceableObject placeableObject)
     {
         BoundsInt area = new BoundsInt();

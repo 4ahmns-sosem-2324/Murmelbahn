@@ -621,10 +621,10 @@ MonoBehaviour:
   gridLayout: {fileID: 968163799}
   mainTileMap: {fileID: 1382974730}
   whiteTile: {fileID: 11400000, guid: 4a2d0df60f588f642984756def9e43b3, type: 2}
-  prefab1: {fileID: 648732543465189089, guid: 3e83f8efc750f34459886a2ea2247699, type: 3}
-  prefab2: {fileID: 1252953063535247708, guid: fbe35eb81d44931469a9e27dd40145b2, type: 3}
-  prefab3: {fileID: 2280285409091761085, guid: 60fc81c5d8175644d92002f787d26af1, type: 3}
-  prefab4: {fileID: 1303983487699905895, guid: 06ac236d3153e7742ab9eede79c51b6a, type: 3}
+  prefab1: {fileID: 6989099735688296731, guid: 56813e75315fccb4a97d76fb573e667f, type: 3}
+  prefab2: {fileID: 2030848783321398797, guid: 40aac59958388a541a697466cb5c17d6, type: 3}
+  prefab3: {fileID: 801213196991025582, guid: 9f08a3e77f818a84c8d1c1a9b01fa012, type: 3}
+  prefab4: {fileID: 286326631535571717, guid: d30c0b35cc99ab9458bd69d690167d92, type: 3}
   inputs: {fileID: -944628639613478452, guid: be1fa80daea153e43bd5e2b1d9602d7c, type: 3}
 --- !u!1 &1147357328
 GameObject:

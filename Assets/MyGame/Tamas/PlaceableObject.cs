@@ -57,6 +57,19 @@ public class PlaceableObject : MonoBehaviour
         vertices = Vertices; 
     }
 
+    public void Rotate()
+    {
+        transform.Rotate(new Vector3(0, 90, 0));
+        size = new Vector3Int(size.y, size.x, 1);
+
+        Vector3[] Vertices = new Vector3[vertices.Length];
+        for (int i = 0; i < Vertices.Length; i++)
+        {
+            Vertices[i] = vertices[(i + 1) % vertices.Length];
+        }
+        vertices = Vertices;
+    }
+
     public virtual void Place()
     {
         ObjectDrag drag = gameObject.GetComponent<ObjectDrag>();

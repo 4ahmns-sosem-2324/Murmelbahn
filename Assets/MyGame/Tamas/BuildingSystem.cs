@@ -27,19 +27,26 @@ public class BuildingSystem : MonoBehaviour
     {
         current = this;
         grid = gridLayout.gameObject.GetComponent<Grid>();
+        
         map = inputs.FindActionMap("Debug");
-        map.FindAction("A").performed += InitializeWithObject;
-        map.FindAction("S").performed += InitializeWithObject;
-        map.FindAction("D").performed += InitializeWithObject;
-        map.FindAction("F").performed += InitializeWithObject;
-        map.FindAction("Return").performed += objectToPlade.Rotate;
+        map.FindAction("Obj1").performed += InitializeWithObject;
+        map.FindAction("Obj2").performed += InitializeWithObject;
+        map.FindAction("Obj3").performed += InitializeWithObject;
+        map.FindAction("Obj4").performed += InitializeWithObject;
+
+        map.FindAction("Obj2").performed += Test;
+        //map.FindAction("Return").performed += objectToPlade.Rotate;
+        
     }
 
     private void Update()
     {
+        
         /*if (Input.GetKeyDown(KeyCode.A))
         {
+            Debug.Log("aaaaaa");
             InitializeWithObject(prefab1);
+            
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
@@ -52,18 +59,18 @@ public class BuildingSystem : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.F))
         {
             InitializeWithObject(prefab4);
-        }*/
-
+        }
+        */
         if (!objectToPlade)
         {
             return; 
         }
-
+        
         /*if (Input.GetKeyDown(KeyCode.Return))
         {
             objectToPlade.Rotate();
-        }*/
-
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (CanBePlaced(objectToPlade))
@@ -80,7 +87,13 @@ public class BuildingSystem : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             Destroy(objectToPlade.gameObject); 
-        }
+        }*/
+    }
+
+
+    public void Test(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("AAAAAAAA");
     }
 
     public static Vector3 GetMouseWorldPosition()
@@ -123,6 +136,8 @@ public class BuildingSystem : MonoBehaviour
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
         objectToPlade = obj.GetComponent<PlaceableObject>();
         obj.AddComponent<ObjectDrag>();
+
+        Debug.Log("aaaaaaaaah");
     }
 
     public void InitializeWithObject(InputAction.CallbackContext callbackContext)
@@ -135,7 +150,7 @@ public class BuildingSystem : MonoBehaviour
         {
             prefab = prefab1;
         }
-        else if (callbackContext.action == map.FindAction("Obj2"))
+        else if (callbackContext.action.name == "Obj2")
         {
             prefab = prefab2;
         }
@@ -160,7 +175,7 @@ public class BuildingSystem : MonoBehaviour
         }
 
     }
-
+    
     private bool CanBePlaced(PlaceableObject placeableObject)
     {
         BoundsInt area = new BoundsInt();
@@ -183,5 +198,15 @@ public class BuildingSystem : MonoBehaviour
     public void TakeArea(Vector3Int start, Vector3Int size) 
     {
         mainTileMap.BoxFill(start, whiteTile, start.x, start.y, start.x + size.x, start.y + size.y); 
+    }
+
+    private void OnDestroy()
+    {
+        map.FindAction("Obj1").performed -= InitializeWithObject;
+        map.FindAction("Obj2").performed -= InitializeWithObject;
+        map.FindAction("Obj3").performed -= InitializeWithObject;
+        map.FindAction("Obj4").performed -= InitializeWithObject;
+
+        //map.FindAction("Return").performed -= objectToPlade.Rotate;
     }
 }

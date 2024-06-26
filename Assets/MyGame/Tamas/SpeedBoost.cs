@@ -10,6 +10,7 @@ public class SpeedBoost : MonoBehaviour
 
     private void Update()
     {
+        gM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         normalizedVelocity = gM.sceneBall.GetComponent<Rigidbody>().velocity.normalized;
         //Debug.Log(normalizedVelocity);
     }

@@ -625,6 +625,7 @@ MonoBehaviour:
   prefab2: {fileID: 1252953063535247708, guid: fbe35eb81d44931469a9e27dd40145b2, type: 3}
   prefab3: {fileID: 2280285409091761085, guid: 60fc81c5d8175644d92002f787d26af1, type: 3}
   prefab4: {fileID: 1303983487699905895, guid: 06ac236d3153e7742ab9eede79c51b6a, type: 3}
+  inputs: {fileID: -944628639613478452, guid: be1fa80daea153e43bd5e2b1d9602d7c, type: 3}
 --- !u!1 &1147357328
 GameObject:
   m_ObjectHideFlags: 0

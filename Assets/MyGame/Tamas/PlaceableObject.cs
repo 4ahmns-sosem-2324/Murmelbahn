@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlaceableObject : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class PlaceableObject : MonoBehaviour
         CallculateSizeInCells();
     }
 
-    public void Rotate()
+    public void Rotate(InputAction.CallbackContext callbackContext)
     {
         transform.Rotate(new Vector3(0, 90, 0));
         size = new Vector3Int(size.y, size.x, 1);

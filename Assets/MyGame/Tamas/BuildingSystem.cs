@@ -28,10 +28,10 @@ public class BuildingSystem : MonoBehaviour
         current = this;
         grid = gridLayout.gameObject.GetComponent<Grid>();
         map = inputs.FindActionMap("Debug");
-        map.FindAction("A").performed += InitializeWithObject;
-        map.FindAction("S").performed += InitializeWithObject;
-        map.FindAction("D").performed += InitializeWithObject;
-        map.FindAction("F").performed += InitializeWithObject;
+        map.FindAction("Obj1").performed += InitializeWithObject;
+        map.FindAction("Obj2").performed += InitializeWithObject;
+        map.FindAction("Obj3").performed += InitializeWithObject;
+        map.FindAction("Obj4").performed += InitializeWithObject;
         map.FindAction("Return").performed += objectToPlade.Rotate;
     }
 
